@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<div id="grid">
+
+    <head>
+        <style>
+            .grid-container {
+                display: grid;
+                column-gap: 50px;
+                grid-template-columns: auto auto auto;
+                background-color: #2196F3;
+                padding: 10px;
+            }
+
+            .grid-item {
+                background-color: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>The column-gap Property</h1>
+
+        <p>Use the <em>column-gap</em> property to adjust the space between the columns:</p>
+
+        <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
+            <div class="grid-item">8</div>
+            <div class="grid-item">9</div>
+        </div>
+
+    </body>
+
+    <h1>Welcome to the Lobby page!</h1>
+    <h2>please choose code block:</h2>
+
+    {/* <div className="App"> */}
+
+        <body>
+            <a href='/block1'>
+                <h2>first exercise:</h2>
+                <img id='first' src={require('../images/first_icon.jpg')} alt='img in here' height={200} width={200} />
+            </a>
+            <a href='/block2'>
+                <h2>second exercise:</h2>
+                <img id='second' src={require('../src/images/programming.png')} alt='img in here' height={200}
+                    width={200} />
+            </a>
+            <a href='/block3'>
+                <h2>third exercise:</h2>
+                <img id='third' src={require('../images/coding-language.png')} alt='img in here' height={200}
+                    width={200} />
+            </a>
+            <a href='/block4'>
+                <h2>fourth exercise:</h2>
+                <img id='fourth' src={require('../images/password.png')} alt='img in here' height={200} width={200} />
+            </a>
+            <a href='/block5'>
+                <h2>fifth exercise:</h2>
+                <img id='fifth' src={require('../images/development.png')} alt='img in here' height={200} width={200} />
+            </a>
+        </body>
+        {/*
+    </div> */}
+</div>
+
+</html>
