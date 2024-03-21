@@ -55,7 +55,7 @@ const CodeBlock3 = () => {
                     lineNumbers='off'
                     height="75vh"
                     theme='vs-dark'
-                    options={{ readOnly: (typeRole == 'Mentor' ? true : false) }}
+                    options={{ readOnly: (typeRole === 'Mentor' ? true : false) }}
                     defaultLanguage="javascript"
                     value={code}
                     onChange={newCode => sendCode(newCode)}
