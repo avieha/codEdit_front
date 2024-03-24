@@ -25,7 +25,7 @@ const CodeBlock1 = () => {
     const [showSmiley, setShowSmiley] = useState(false);
     const solution = "HEY!";
 
-    const socket1 = io('https://code-editor24.onrender.com:10000');
+    const socket1 = io('https://code-editor24.onrender.com/');
 
     useEffect(() => {
         // reports to the server on page changed
