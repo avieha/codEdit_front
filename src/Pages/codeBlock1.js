@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { highlight, languages } from 'prismjs/components/prism-core';
+// import { highlight, languages } from 'prismjs/components/prism-core';
 import Editor from '@monaco-editor/react';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/themes/prism.css';
+// import 'prismjs/components/prism-clike';
+// import 'prismjs/components/prism-javascript';
+// import 'prismjs/themes/prism.css';
 import io from 'socket.io-client';
-import 'highlight.js/styles/default.css';
+// import 'highlight.js/styles/default.css';
 import './codeBlock1.css'
 
 // i added notes in this file but not in the other codeBlocks
@@ -18,14 +18,14 @@ const CodeBlock1 = () => {
     }`);
 
     // determines who's watching the page, mentor/student
-    const [typeRole, setRole] = useState('Mentor');
+    const [typeRole, setRole] = useState('Student');
 
     //Sets the smiley for the right solution!!
     // works ONLY on CodeBlock1
     const [showSmiley, setShowSmiley] = useState(false);
     const solution = "HEY!";
 
-    const socket1 = io('http://localhost:3001');
+    const socket1 = io('http://localhost:10000');
 
     useEffect(() => {
         // reports to the server on page changed

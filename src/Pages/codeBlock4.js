@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { highlight, languages } from 'prismjs/components/prism-core';
+// import { highlight, languages } from 'prismjs/components/prism-core';
 import Editor from '@monaco-editor/react';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/themes/prism.css';
+// import 'prismjs/components/prism-clike';
+// import 'prismjs/components/prism-javascript';
+// import 'prismjs/themes/prism.css';
 import io from 'socket.io-client';
-import 'highlight.js/styles/default.css';
+// import 'highlight.js/styles/default.css';
 
 
 const CodeBlock4 = () => {
@@ -16,7 +16,7 @@ const CodeBlock4 = () => {
 
     const [typeRole, setRole] = useState('Mentor');
 
-    const socket4 = io('http://localhost:3004');
+    const socket4 = io('http://localhost:10000');
 
     useEffect(() => {
         if (socket4) {
