@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import { highlight, languages } from 'prismjs/components/prism-core';
 import Editor from '@monaco-editor/react';
-// import 'prismjs/components/prism-clike';
-// import 'prismjs/components/prism-javascript';
-// import 'prismjs/themes/prism.css';
 import io from 'socket.io-client';
-// import 'highlight.js/styles/default.css';
 import './codeBlock1.css'
 
 // i added notes in this file but not in the other codeBlocks
@@ -25,7 +20,7 @@ const CodeBlock1 = () => {
     const [showSmiley, setShowSmiley] = useState(false);
     const solution = "HEY!";
 
-    const socket1 = io('https://code-editor24.onrender.com/');
+    const socket1 = io("https://code-editor24.onrender.com");
 
     useEffect(() => {
         // reports to the server on page changed

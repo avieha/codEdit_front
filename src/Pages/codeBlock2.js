@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import { highlight, languages } from 'prismjs/components/prism-core';
 import Editor from '@monaco-editor/react';
-// import 'prismjs/components/prism-clike';
-// import 'prismjs/components/prism-javascript';
-// import 'prismjs/themes/prism.css';
 import io from 'socket.io-client';
-// import 'highlight.js/styles/default.css';
 
 
 const CodeBlock2 = () => {
