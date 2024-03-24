@@ -16,7 +16,7 @@ const CodeBlock4 = () => {
 
     const [typeRole, setRole] = useState('Mentor');
 
-    const socket4 = io('http://localhost:10000');
+    const socket4 = io('https://code-editor24.onrender.com:10000');
 
     useEffect(() => {
         if (socket4) {
