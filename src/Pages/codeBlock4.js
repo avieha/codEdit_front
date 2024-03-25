@@ -9,23 +9,37 @@ const CodeBlock4 = () => {
       }
       randomBetween(1,5);`);
 
+    // determines who's watching the page, mentor/student
     const [typeRole, setRole] = useState('Mentor');
 
-    const socket4 = io('https://code-editor24.onrender.com');
+    //Sets the smiley for the right solution!!
+    // works ONLY on CodeBlock1
+    const [showSmiley, setShowSmiley] = useState(false);
+    const solution = "HEY!";
+
+    const socket4 = io("https://code-editor24.onrender.com");
 
     useEffect(() => {
+        // reports to the server on page changed
         if (socket4) {
-            socket4.emit('page_change', '/block4');
+            socket4.emit('page_change4', { currentPage: '/block4' });
         }
 
-        socket4.on('receive_users', ({ users }) => {
-            if (users.length > 0) {
+        //if there is more than one viewer, they count as students.
+        socket4.on('receive_users', ({ numUsers }) => {
+            if (numUsers > 1) {
                 setRole('Student');
             }
         });
 
-        socket4.on('receive_code', ({ newCode }) => {
+        // code is being broadcasted live from another user
+        socket4.on('receive_code4', ({ newCode }) => {
             setCode(newCode);
+            // Check if the inserted code is correct
+            if (newCode.toString() === solution) {
+                setShowSmiley(true);
+                setTimeout(() => setShowSmiley(false), 10000); // Hide the smiley after 10 seconds
+            }
         });
 
         return () => {
@@ -33,15 +47,14 @@ const CodeBlock4 = () => {
         };
     }, [socket4]);
 
-
+    // method for sending newcode to the server
     const sendCode = (newCode) => {
         setCode(newCode);
 
         if (socket4) {
-            socket4.emit('send_code', { newCode });
+            socket4.emit('send_code4', { newCode });
         }
     }
-
     return (
         <div>
             <div>
@@ -56,6 +69,7 @@ const CodeBlock4 = () => {
                     value={code}
                     onChange={newCode => sendCode(newCode)}
                 />
+                {showSmiley && <div className="smiley">😊</div>}
             </div>
         </div>
     );

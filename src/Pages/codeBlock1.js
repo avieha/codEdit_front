@@ -8,12 +8,13 @@ import './codeBlock1.css'
 
 
 const CodeBlock1 = () => {
+    // Code Sample for editing
     const [code, setCode] = useState(`function reverseString(str) {
         return str.split("").reverse().join("");
     }`);
 
     // determines who's watching the page, mentor/student
-    const [typeRole, setRole] = useState('Student');
+    const [typeRole, setRole] = useState('Mentor');
 
     //Sets the smiley for the right solution!!
     // works ONLY on CodeBlock1
@@ -25,18 +26,18 @@ const CodeBlock1 = () => {
     useEffect(() => {
         // reports to the server on page changed
         if (socket1) {
-            socket1.emit('page_change', '/block1');
+            socket1.emit('page_change', { currentPage: '/block1' });
         }
 
-        //if there are more than one viewer, they are students.
-        socket1.on('receive_users', ({ users }) => {
-            if (users.length > 0) {
+        //if there is more than one viewer, they count as students.
+        socket1.on('receive_users', ({ numUsers }) => {
+            if (numUsers > 1) {
                 setRole('Student');
             }
         });
 
         // code is being broadcasted live from another user
-        socket1.on('receive_code', ({ newCode }) => {
+        socket1.on('receive_code1', ({ newCode }) => {
             setCode(newCode);
             // Check if the inserted code is correct
             if (newCode.toString() === solution) {
@@ -55,7 +56,7 @@ const CodeBlock1 = () => {
         setCode(newCode);
 
         if (socket1) {
-            socket1.emit('send_code', { newCode });
+            socket1.emit('send_code1', { newCode });
         }
     }
 
