@@ -23,7 +23,8 @@ const CodeBlock = ({ initialCode, title }) => {
     const solution = "HEY!";
 
     // https://code-editor24.onrender.com
-    const socket = io("http://localhost:10000");
+    // http://localhost:10000
+    const socket = io("https://code-editor24.onrender.com");
 
     useEffect(() => {
         // if there is more than one viewer, they count as students.
