@@ -28,13 +28,6 @@ const CodeBlock = ({ initialCode, title }) => {
     const socket = io("https://code-editor24.onrender.com");
 
     useEffect(() => {
-        // if there is more than one viewer, they count as students.
-        socket.on('receive_users', ({ count }) => {
-            if (count > 1) {
-                setRole('Student');
-            }
-        });
-
         // code is being broadcasted live from another user
         socket.on(`receive_code${blockNum}`, ({ newCode }) => {
             setCode(newCode);
@@ -60,6 +53,13 @@ const CodeBlock = ({ initialCode, title }) => {
         if (socket) {
             socket.emit('page_change', { currentPage: title, userId: clientId });
         }
+
+        // if there is more than one viewer, they count as students.
+        socket.on('receive_users', ({ count }) => {
+            if (count > 1) {
+                setRole('Student');
+            }
+        });
     }, []);
 
     // function to generate a unique ID
