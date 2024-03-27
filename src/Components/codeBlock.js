@@ -10,6 +10,7 @@ import './codeBlock.css'
 const CodeBlock = ({ initialCode, title }) => {
 
     const blockNum = title.substring(6);
+    // let clientId = localStorage.getItem('clientId');
 
     // Code Sample for editing
     const [code, setCode] = useState(initialCode);
@@ -28,8 +29,8 @@ const CodeBlock = ({ initialCode, title }) => {
 
     useEffect(() => {
         // if there is more than one viewer, they count as students.
-        socket.on(`receive_users${blockNum}`, ({ numUsers }) => {
-            if (numUsers > 1) {
+        socket.on('receive_users', ({ count }) => {
+            if (count > 1) {
                 setRole('Student');
             }
         });
@@ -51,11 +52,23 @@ const CodeBlock = ({ initialCode, title }) => {
     }, [socket, blockNum]);
 
     useEffect(() => {
+        // If the unique identifier doesn't exist, generate a new one
+        let clientId = localStorage.getItem('clientId') || generateUniqueId();
+        localStorage.setItem('clientId', clientId);
+
         // reports to the server the current page number at initial render
         if (socket) {
-            socket.emit('page_change', { currentPage: { title } });
+            socket.emit('page_change', { currentPage: title, userId: clientId });
         }
     }, []);
+
+    // function to generate a unique ID
+    const generateUniqueId = () => {
+        const randomString = Math.random().toString(36).substring(2, 10);
+        const timestamp = new Date().getTime().toString(36);
+        const uniqueId = randomString + timestamp;
+        return uniqueId;
+    }
 
     // method for sending new code to the server
     const sendCode = (newCode) => {
