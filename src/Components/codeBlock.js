@@ -54,7 +54,8 @@ const CodeBlock = ({ initialCode, title }) => {
         }
 
         // if there is more than one viewer, they count as students.
-        socket.on('receive_users', ({ count, firstUser }) => {
+        socket.on('receive_users', ({ firstUser }) => {
+            
             if (firstUser !== clientId) {
                 setRole('Student');
             }
