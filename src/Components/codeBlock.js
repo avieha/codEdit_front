@@ -16,7 +16,7 @@ const CodeBlock = ({ initialCode, title }) => {
     const [code, setCode] = useState(initialCode);
 
     // determines who's watching the page, mentor/student
-    const [typeRole, setRole] = useState('Mentor');
+    const [typeRole, setRole] = useState('Student');
 
     // Sets the smiley for the right solution!!
     const [showSmiley, setShowSmiley] = useState(false);
@@ -55,9 +55,8 @@ const CodeBlock = ({ initialCode, title }) => {
 
         // if there is more than one viewer, they count as students.
         socket.on('receive_users', ({ firstUser }) => {
-            
-            if (firstUser !== clientId) {
-                setRole('Student');
+            if (firstUser === clientId) {
+                setRole('Mentor');
             }
         });
     }, []);
