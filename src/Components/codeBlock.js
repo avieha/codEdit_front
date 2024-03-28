@@ -24,7 +24,7 @@ const CodeBlock = ({ initialCode, title }) => {
 
     // https://code-editor24.onrender.com
     // http://localhost:10000
-    const socket = io("https://code-editor24.onrender.com");
+    const socket = io("http://localhost:10000");
 
     useEffect(() => {
         // code is being broadcasted live from another user
