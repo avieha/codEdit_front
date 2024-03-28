@@ -16,7 +16,7 @@ const CodeBlock = ({ initialCode, title }) => {
     const [code, setCode] = useState(initialCode);
 
     // determines who's watching the page, mentor/student
-    const [typeRole, setRole] = useState('Student');
+    const [typeRole, setRole] = useState('Mentor');
 
     // Sets the smiley for the right solution!!
     const [showSmiley, setShowSmiley] = useState(false);
@@ -24,7 +24,7 @@ const CodeBlock = ({ initialCode, title }) => {
 
     // https://code-editor24.onrender.com
     // http://localhost:10000
-    const socket = io("http://localhost:10000");
+    const socket = io("https://code-editor24.onrender.com");
 
     useEffect(() => {
         // code is being broadcasted live from another user
@@ -55,8 +55,8 @@ const CodeBlock = ({ initialCode, title }) => {
 
         // if there is more than one viewer, they count as students.
         socket.on('receive_users', ({ firstUser }) => {
-            if (firstUser === clientId) {
-                setRole('Mentor');
+            if (firstUser !== clientId) {
+                setRole('Student');
             }
         });
     }, []);
