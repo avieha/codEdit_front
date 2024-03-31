@@ -1,6 +1,8 @@
 # Live Code Editor - front end
 (here is the link to the <b>back-end</b> of this project: https://github.com/avieha/codEdit_back)
 
+use and review this app on: https://code-edit.netlify.app/
+
 this is a simple on-line code editor that allows mentors to upload their code assignments, and watch their students editing it live.
 
 there are 4 different excersies, and the first one to open the excercize will see the code at Read-only mode,
